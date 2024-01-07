@@ -7,6 +7,5 @@ import amplifyconfig from '/src/amplifyconfiguration.json';
 import Graph from './components/Graph.vue';
 
 Amplify.configure(amplifyconfig);
-
 const app = createApp(Graph);
 createApp(App).mount('#app');
