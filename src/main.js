@@ -29,7 +29,8 @@ const app = createApp(App);
 app.use(router);
 app.mount('#app');
 
-// add
+// ---add code----
+
 Amplify.configure(amplifyconfig);
 
 const client = generateClient();
