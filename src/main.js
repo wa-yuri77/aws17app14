@@ -1,12 +1,35 @@
 import './style.css';
-import { Amplify } from 'aws-amplify';
+import {Amplify} from 'aws-amplify';
 import amplifyconfig from '/src/amplifyconfiguration.json';
 
-import { generateClient } from 'aws-amplify/api';
-import { createTodo } from '/src/graphql/mutations';
-import { listTodos } from '/src/graphql/queries';
-import { onCreateTodo } from '/src/graphql/subscriptions';
+import {generateClient} from 'aws-amplify/api';
+import {createTodo} from '/src/graphql/mutations';
+import {listTodos} from '/src/graphql/queries';
+import {onCreateTodo} from '/src/graphql/subscriptions';
+// add code
 
+import { createApp } from 'vue';
+import App from './App.vue';
+import { createRouter, createWebHistory } from 'vue-router';
+
+import HelloWorld from './components/HelloWorld.vue';
+import Graph from './components/Graph.vue';
+
+const routes = [
+    { path: '/', component: HelloWorld },
+    { path: '/graph', component: Graph },
+];
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+});
+
+const app = createApp(App);
+app.use(router);
+app.mount('#app');
+
+// add
 Amplify.configure(amplifyconfig);
 
 const client = generateClient();
@@ -51,7 +74,7 @@ MutationButton.addEventListener('click', (evt) => {
 });
 
 function subscribeToNewTodos() {
-    client.graphql({ query: onCreateTodo }).subscribe({
+    client.graphql({query: onCreateTodo}).subscribe({
         next: (evt) => {
             const todo = evt.data.onCreateTodo;
             SubscriptionResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
