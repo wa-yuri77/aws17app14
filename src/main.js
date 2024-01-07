@@ -64,6 +64,24 @@ async function fetchCountTodos() {
             // alert(items.length);
             values[i]=items.length;
         }
+        // const input ={
+        //     name: { eq: 'Use AppSync' }
+        // }
+        // const response = await client.graphql({
+        //     query: listTodos,
+        //     variables: {
+        //         filter: input,
+        //         limit: null, // 取得するアイテムの数を制限する場合
+        //         nextToken: null // ページネーションのためのトークンなど
+        //     }
+        // });
+
+        // const items = response.data.listTodos.items;
+        // alert(items.length);
+        // values[i]=[items.length];
+        // response.data.listTodos.items.map((todo, i) => {
+        //     QueryResult.innerHTML += `<p>${todo.name} - ${todo.description}</p>`;
+        // });
 
         return values;
 
@@ -78,6 +96,51 @@ MutationButton.addEventListener('click', (evt) => {
     });
 });
 
+// PrintButton.addEventListener('click', (evt) => {
+
+//     // ▼グラフの中身
+//     var pieData = [
+//        {
+//           value: 240,            // 値
+//           color:"#F7464A",       // 色
+//           highlight: "#FF5A5E",  // マウスが載った際の色
+//           label: "りんご"        // ラベル
+//        },
+//        {
+//           value: 50,
+//           color: "#41C44E",
+//           highlight: "#6CD173",
+//           label: "メロン"
+//        },
+//        {
+//           value: 100,
+//           color: "#FDB45C",
+//           highlight: "#FFC870",
+//           label: "みかん"
+//        },
+//        {
+//           value: 65,
+//           color: "#AA49B8",
+//           highlight: "#C583CF",
+//           label: "ぶどう"
+//        },
+//        {
+//           value: 75,
+//           color: "#4D5360",
+//           highlight: "#616774",
+//           label: "その他"
+//        }
+
+//     ];
+
+//     // ▼上記のグラフを描画するための記述
+//     window.onload = function(){
+//        var ctx = document.getElementById("graph-area").getContext("2d");
+//        window.myPie = new Chart(ctx).Pie(pieData);
+//     };
+
+
+// });
 
 function subscribeToNewTodos() {
     client.graphql({ query: onCreateTodo }).subscribe({
@@ -137,9 +200,80 @@ val.then(result => {
 });
 
 
+// var pieData = [
+// {
+//     value: 100,            // 値
+//     color:"#F7464A",       // 色
+//     highlight: "#FF5A5E",  // マウスが載った際の色
+//     label: "りんご"        // ラベル
+// },
+// {
+//     value: 100,
+//     color: "#41C44E",
+//     highlight: "#6CD173",
+//     label: "メロン"
+// },
+// {
+//     value: 100,
+//     color: "#FDB45C",
+//     highlight: "#FFC870",
+//     label: "みかん"
+// },
+// {
+//     value: 100,
+//     color: "#AA49B8",
+//     highlight: "#C583CF",
+//     label: "ぶどう"
+// },
+// {
+//     value: 30,
+//     color: "#4D5360",
+//     highlight: "#616774",
+//     label: "その他"
+// }
+
+// ];
+
+// window.onload = function () {
+// var ctx = document.getElementById("graph-area").getContext("2d");
+// window.myPie = new Chart(ctx).Pie(pieData);
+// }
+
+
+// alert(toString.call(ls));
+// console.log(toString.call(ls))
+// console.log(`ls is ${ls}`)
+// console.log(val)
 subscribeToNewTodos();
 // fetchCountTodos();
 fetchTodos();
+
+// import './style.css'
+// import javascriptLogo from './javascript.svg'
+// import viteLogo from '/vite.svg'
+// import { setupCounter } from './counter.js'
+//
+// document.querySelector('#app').innerHTML = `
+//   <div>
+//     <a href="https://vitejs.dev" target="_blank">
+//       <img src="${viteLogo}" class="logo" alt="Vite logo" />
+//     </a>
+//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
+//     </a>
+//     <h1>Hello Vite!</h1>
+//     <div class="card">
+//       <button id="counter" type="button"></button>
+//     </div>
+//     <p class="read-the-docs">
+//       Click on the Vite logo to learn more
+//     </p>
+//   </div>
+// `
+//
+// setupCounter(document.querySelector('#counter'))
+
+
 
 // import './style.css'
 // import javascriptLogo from './javascript.svg'
